@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Product_1 = require("../domain/Product");
+const InMemoryProductRepository_1 = require("../infrastructure/InMemoryProductRepository");
+const ProductService_1 = require("../application/ProductService");
+const repository = new InMemoryProductRepository_1.InMemoryProductRepository();
+const service = new ProductService_1.ProductService(repository);
+const product1 = new Product_1.Product("1", "Laptop", 1200, 5);
+const product2 = new Product_1.Product("2", "Phone", 800, 10);
+service.addProduct(product1);
+service.addProduct(product2);
+console.log("All Products:", service.getAllProducts());
